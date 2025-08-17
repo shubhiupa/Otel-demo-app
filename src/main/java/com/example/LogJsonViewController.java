@@ -4,12 +4,27 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.io.IOException;
 import java.nio.file.*;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * LogJsonViewController
+ *
+ * Endpoint:
+ * - GET http://localhost:8080/logs/last-10-mins/json  → returns structured logs from the last 10 minutes.
+ * Purpose:
+ * - Reads structured JSON logs from the file "logs/app.json".
+ * - Filters to only include logs from the last 10 minutes.
+ * - Returns them as a JSON array of log objects.
+ *
+ * Important:
+ *  - By default, Spring Boot logs go to console in plain text.
+ *  - For this endpoint to return data, configure logging to output JSON to logs/app.json
+ */
+
 
 @RestController
 public class LogJsonViewController {

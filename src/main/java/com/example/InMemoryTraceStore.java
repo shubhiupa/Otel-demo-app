@@ -7,6 +7,18 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
+/**
+ * InMemoryTraceStore
+ *
+ * Responsibilities:
+ * - Stores trace events in memory for a rolling 10-minute window.
+ * - Supports retrieval by controllers (e.g., TraceJsonViewController).
+ * Important:
+ * - This is an **ephemeral in-memory store**:
+ * - All traces are lost when the application restarts.
+ * - No persistence beyond the last 10 minutes of runtime.
+ */
+
 @Component
 public class InMemoryTraceStore {
 

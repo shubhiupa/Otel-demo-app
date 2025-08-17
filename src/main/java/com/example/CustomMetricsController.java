@@ -8,6 +8,25 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Collectors;
 
+
+/**
+ * CustomMetricsController
+ *
+ *  Purpose:
+ *  -Tracks simple in-memory metrics using timestamp
+ * Endpoint:
+ * - GET /metrics/last-10-mins → returns metrics generated in the last 10 minutes.
+ * http://localhost:8080/metrics/last-10-mins
+ * {
+ *       "errorEvents": <int>,
+ *      "latencySpikes": <int>,
+ *       "cpuSpikes": <int>,
+ *       "totalEvents": <int>,
+ *      "http200Count": <int>,
+ *       "http500Count": <int>
+ *     }
+ */
+
 @RestController
 public class CustomMetricsController {
 

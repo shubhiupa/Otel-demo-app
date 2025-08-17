@@ -18,6 +18,27 @@ import java.time.Instant;
 import java.util.Random;
 import io.opentelemetry.api.trace.StatusCode;
 
+/**
+ * TelemetryGenerator
+ *
+ * Purpose:
+ * - Continuously generates random telemetry for the demo app.
+ * - Ensures traces, metrics, and logs are always flowing into the system.
+ *
+ * Behavior:
+ * - On startup, initializes an OpenTelemetry tracer with a LoggingSpanExporter.
+ * - Every 5 seconds: generates a random span, logs it, updates metrics,
+ *   and sometimes simulates an error.
+ * - Every 10 minutes: runs an "auto replay" that simulates 60 events
+ *   (normal or incident traffic with latency/CPU spikes).
+ * - Stores generated events into InMemoryTraceStore for retrieval
+ *   via /traces/last-10-mins.
+ *
+ * Difference from TelemetryReplayController:
+ * - This runs on a schedule automatically (no user action required).
+ * - ReplayController is manual — triggered via HTTP GET.
+ */
+
 @Component
 public class TelemetryGenerator {
 

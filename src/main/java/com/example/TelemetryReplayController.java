@@ -14,6 +14,27 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.Instant;
 import java.util.Random;
 
+/**
+ * TelemetryReplayController
+ *
+ * Endpoint:
+ * - GET /replay-last-10-mins
+ *
+ * Purpose:
+ * - Replays 60 telemetry events covering the last 10 minutes.
+ * - Simulates both normal load and incident scenarios (errors, latency spikes, CPU spikes).
+ *
+ * Behavior:
+ * - Generates spans with attributes (user.id, action, error.type, etc.).
+ * - Records metrics via Micrometer counters and CustomMetricsController.
+ * - Stores events in InMemoryTraceStore for retrieval via /traces/last-10-mins.
+ * - Logs detailed INFO/ERROR messages for observability testing.
+ *
+ * Usage:
+ * - Call this endpoint to quickly populate the system with demo telemetry.
+ * - ~30% chance of incident simulation to test alerting and dashboards.
+ */
+
 @RestController
 public class TelemetryReplayController {
 

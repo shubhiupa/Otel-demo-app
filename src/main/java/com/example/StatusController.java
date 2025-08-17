@@ -1,9 +1,16 @@
 package com.example;
 
 import org.springframework.web.bind.annotation.*;
-
 import java.util.*;
 import java.util.stream.Collectors;
+
+/**
+ * StatusController
+ *
+ * Endpoint:
+ * - GET /status → returns simple health/status info of teh App
+ * http://localhost:8080/status
+ */
 
 @RestController
 @RequestMapping("/status")
